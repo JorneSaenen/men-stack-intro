@@ -1,6 +1,5 @@
 import dotenv from 'dotenv';
 dotenv.config();
-import chalk from 'chalk';
 import cors from 'cors';
 import express from 'express';
 import mongoose from 'mongoose';
@@ -17,7 +16,6 @@ const corsOptions = {
 // middleware
 app.use(express.json());
 app.use(cors(corsOptions));
-
 //routes
 app.use(endpoint, movieRouter);
 
@@ -28,7 +26,7 @@ const startServer = async () => {
     mongoose.connect(MONGO_URL);
     app.listen(PORT, () => {
       if (NODE_ENV === 'development') {
-        console.log(chalk.bgGreen.bold(`http://localhost:${PORT}✅`));
+        console.log(`http://localhost:${PORT}`);
       } else {
         console.log('Server is running...');
       }
