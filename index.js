@@ -4,6 +4,7 @@ import cors from 'cors';
 import express from 'express';
 import mongoose from 'mongoose';
 import movieRouter from './routes/movieRoutes.js';
+import swagger from './swagger.js';
 
 //variables
 const { MONGO_URL, PORT, FRONTEND_URL, NODE_ENV } = process.env;
@@ -27,6 +28,7 @@ const startServer = async () => {
     app.listen(PORT, () => {
       if (NODE_ENV === 'development') {
         console.log(`http://localhost:${PORT}`);
+        swagger(app);
       } else {
         console.log('Server is running...');
       }
